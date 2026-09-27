@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Route Result - Localized Delivery Route Planner</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🚚 Route Result</h1>
+
+        <p class="subtitle">
+            Your delivery route has been calculated successfully.
+        </p>
+
+
+        <!-- Route Summary -->
+
+        <div class="summary">
+
+            <div class="summary-box">
+
+                <span>📏</span>
+
+                <strong>
+                    {{ distance }} km
+                </strong>
+
+                <small>
+                    Total Distance
+                </small>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>⏱️</span>
+
+                <strong>
+                    {{ duration }} min
+                </strong>
+
+                <small>
+                    Estimated Time
+                </small>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>📍</span>
+
+                <strong>
+                    {{ locations|length }}
+                </strong>
+
+                <small>
+                    Total Stops
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- Delivery Route -->
+
+        <div class="success">
+
+            <h2>✅ Best Route Found!</h2>
+
+            <h3>🚚 Delivery Route</h3>
+
+            <div class="route-list">
+
+                {% for location in locations %}
+
+                    <div class="route-item">
+
+                        <span class="number">
+                            {{ loop.index }}
+                        </span>
+
+                        <span>
+                            {{ location }}
+                        </span>
+
+                    </div>
+
+                    {% if not loop.last %}
+
+                        <div class="arrow">
+                            ↓
+                        </div>
+
+                    {% endif %}
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+
+        <!-- Map -->
+
+        <div id="map"></div>
+
+
+        <!-- Back Button -->
+
+        <button onclick="window.location.href='/planner'">
+            ← Plan Another Route
+        </button>
+
+    </div>
+
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
+    <!-- Route Data -->
+
+    <script id="route-data" type="application/json">
+        {{ geometry | tojson | safe }}
+    </script>
+
+
+    <script>
+
+        const routeData =
+            document.getElementById("route-data").textContent.trim();
+
+
+        if (routeData) {
+
+            const geometry =
+                JSON.parse(routeData);
+
+
+            if (geometry && geometry.coordinates) {
+
+                const coordinates =
+                    geometry.coordinates.map(
+                        point => [point[1], point[0]]
+                    );
+
+
+                const map =
+                    L.map("map");
+
+
+                L.tileLayer(
+                    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                    {
+                        attribution:
+                            "&copy; OpenStreetMap contributors"
+                    }
+                ).addTo(map);
+
+
+                const routeLine =
+                    L.polyline(
+                        coordinates,
+                        {
+                            weight: 6
+                        }
+                    ).addTo(map);
+
+
+                map.fitBounds(
+                    routeLine.getBounds(),
+                    {
+                        padding: [40, 40]
+                    }
+                );
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

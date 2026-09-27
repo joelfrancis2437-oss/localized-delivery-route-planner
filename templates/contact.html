@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact | Localized Delivery Route Planner</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    {% include "navbar.html" %}
+
+    <main>
+
+        <section class="contact-hero">
+
+            <div class="contact-container">
+
+                <p class="section-tag">CONTACT</p>
+
+                <h1>Get in Touch</h1>
+
+                <p>
+                    Have a question about the Localized Delivery Route
+                    Planner? Send us a message.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="contact-section">
+
+            <div class="contact-container">
+
+                <div class="contact-grid">
+
+                    <!-- Contact Information -->
+
+                    <div class="contact-info">
+
+                        <h2>Project Information</h2>
+
+                        <p>
+                            This project is developed as a web-based
+                            logistics solution for planning and managing
+                            local delivery routes.
+                        </p>
+
+                        <div class="info-item">
+
+                            <div class="info-icon">📍</div>
+
+                            <div>
+                                <strong>Project Type</strong>
+                                <span>
+                                    Web Application & Logistics
+                                </span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="info-item">
+
+                            <div class="info-icon">💻</div>
+
+                            <div>
+                                <strong>Technology</strong>
+                                <span>
+                                    Python, Flask, HTML, CSS & JavaScript
+                                </span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="info-item">
+
+                            <div class="info-icon">🗺️</div>
+
+                            <div>
+                                <strong>Routing</strong>
+                                <span>
+                                    OpenStreetMap, Leaflet & OSRM
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Contact Form -->
+
+                    <div class="contact-card">
+
+                        <h2>Send a Message</h2>
+
+                        <form id="contactForm">
+
+                            <div class="form-group">
+
+                                <label for="name">
+                                    Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="name"
+                                    placeholder="Enter your name"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="email">
+                                    Email
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    placeholder="Enter your email"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="message">
+                                    Message
+                                </label>
+
+                                <textarea
+                                    id="message"
+                                    rows="6"
+                                    placeholder="Enter your message"
+                                    required
+                                ></textarea>
+
+                            </div>
+
+
+                            <button type="submit">
+                                Send Message
+                            </button>
+
+                            <p
+                                id="successMessage"
+                                class="success-message"
+                            ></p>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="contact-footer">
+
+        <p>
+            Localized Delivery Route Planner
+        </p>
+
+        <span>
+            Web Application & Logistics Project
+        </span>
+
+    </footer>
+
+
+    <script>
+
+        document
+            .getElementById("contactForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                document
+                    .getElementById("successMessage")
+                    .textContent =
+                    "Thank you! Your message has been received.";
+
+                this.reset();
+
+            });
+
+    </script>
+
+
+    <style>
+
+        .contact-hero {
+            background: linear-gradient(
+                135deg,
+                #eff6ff,
+                #ffffff
+            );
+
+            padding: 80px 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .contact-container {
+            width: 92%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-tag {
+            color: #2563eb;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .contact-hero h1 {
+            font-size: 46px;
+            color: #111827;
+            margin: 0 0 15px;
+        }
+
+        .contact-hero p:last-child {
+            color: #4b5563;
+            font-size: 17px;
+            line-height: 1.7;
+            max-width: 650px;
+        }
+
+        .contact-section {
+            padding: 70px 20px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 35px;
+            align-items: start;
+        }
+
+        .contact-info {
+            padding: 25px 0;
+        }
+
+        .contact-info h2,
+        .contact-card h2 {
+            color: #111827;
+            margin-top: 0;
+        }
+
+        .contact-info > p {
+            color: #4b5563;
+            line-height: 1.7;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-top: 25px;
+        }
+
+        .info-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            background: #eff6ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .info-item strong {
+            display: block;
+            color: #111827;
+            margin-bottom: 4px;
+        }
+
+        .info-item span {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .contact-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #374151;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 7px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            padding: 12px;
+            font-family: inherit;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #2563eb;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .contact-card button {
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            padding: 13px;
+            background: #2563eb;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .contact-card button:hover {
+            background: #1d4ed8;
+        }
+
+        .success-message {
+            color: #15803d;
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+
+        .contact-footer {
+            border-top: 1px solid #e5e7eb;
+            padding: 30px 20px;
+            text-align: center;
+            color: #6b7280;
+        }
+
+        .contact-footer p {
+            margin: 0 0 6px;
+            color: #111827;
+            font-weight: bold;
+        }
+
+        .contact-footer span {
+            font-size: 13px;
+        }
+
+        @media (max-width: 800px) {
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-hero h1 {
+                font-size: 38px;
+            }
+
+        }
+
+    </style>
+
+</body>
+</html>

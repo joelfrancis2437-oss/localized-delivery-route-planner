@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Plan Route - Localized Delivery Route Planner
+    </title>
+
+    <!-- Favicon -->
+    <link rel="icon"
+          type="image/svg+xml"
+          href="{{ url_for('static', filename='images/favicon.svg') }}">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+</head>
+
+
+<body>
+
+
+    {% include "navbar.html" %}
+
+
+    <div class="container">
+
+        <h1>
+            🚚 Plan Your Delivery Route
+        </h1>
+
+        <p class="subtitle">
+            Enter your pickup location and delivery addresses
+            to plan your optimized route.
+        </p>
+
+
+        <!-- ========================= -->
+        <!-- ROUTE FORM -->
+        <!-- ========================= -->
+
+        <div class="form-box">
+
+
+            <!-- PICKUP -->
+
+            <label for="pickup">
+                📍 Pickup Location
+            </label>
+
+            <input
+                type="text"
+                id="pickup"
+                placeholder="Enter pickup location"
+            >
+
+
+            <!-- DELIVERY 1 -->
+
+            <label for="address1">
+                📦 Delivery Address 1
+            </label>
+
+            <input
+                type="text"
+                id="address1"
+                placeholder="Enter delivery address"
+            >
+
+            <label for="priority1">
+                ⚡ Delivery Priority
+            </label>
+
+            <select id="priority1">
+
+                <option value="Normal">
+                    Normal
+                </option>
+
+                <option value="High">
+                    High
+                </option>
+
+                <option value="Low">
+                    Low
+                </option>
+
+            </select>
+
+
+            <label for="status1">
+                📦 Delivery Status
+            </label>
+
+            <select id="status1">
+
+                <option value="Pending">
+                    Pending
+                </option>
+
+                <option value="Out for Delivery">
+                    Out for Delivery
+                </option>
+
+                <option value="Delivered">
+                    Delivered
+                </option>
+
+                <option value="Cancelled">
+                    Cancelled
+                </option>
+
+            </select>
+
+
+            <!-- DELIVERY 2 -->
+
+            <label for="address2">
+                📦 Delivery Address 2
+            </label>
+
+            <input
+                type="text"
+                id="address2"
+                placeholder="Enter delivery address"
+            >
+
+            <label for="priority2">
+                ⚡ Delivery Priority
+            </label>
+
+            <select id="priority2">
+
+                <option value="Normal">
+                    Normal
+                </option>
+
+                <option value="High">
+                    High
+                </option>
+
+                <option value="Low">
+                    Low
+                </option>
+
+            </select>
+
+
+            <label for="status2">
+                📦 Delivery Status
+            </label>
+
+            <select id="status2">
+
+                <option value="Pending">
+                    Pending
+                </option>
+
+                <option value="Out for Delivery">
+                    Out for Delivery
+                </option>
+
+                <option value="Delivered">
+                    Delivered
+                </option>
+
+                <option value="Cancelled">
+                    Cancelled
+                </option>
+
+            </select>
+
+
+            <!-- DELIVERY 3 -->
+
+            <label for="address3">
+                📦 Delivery Address 3
+            </label>
+
+            <input
+                type="text"
+                id="address3"
+                placeholder="Enter delivery address"
+            >
+
+            <label for="priority3">
+                ⚡ Delivery Priority
+            </label>
+
+            <select id="priority3">
+
+                <option value="Normal">
+                    Normal
+                </option>
+
+                <option value="High">
+                    High
+                </option>
+
+                <option value="Low">
+                    Low
+                </option>
+
+            </select>
+
+
+            <label for="status3">
+                📦 Delivery Status
+            </label>
+
+            <select id="status3">
+
+                <option value="Pending">
+                    Pending
+                </option>
+
+                <option value="Out for Delivery">
+                    Out for Delivery
+                </option>
+
+                <option value="Delivered">
+                    Delivered
+                </option>
+
+                <option value="Cancelled">
+                    Cancelled
+                </option>
+
+            </select>
+
+
+            <!-- DELIVERY 4 -->
+
+            <label for="address4">
+                📦 Delivery Address 4
+            </label>
+
+            <input
+                type="text"
+                id="address4"
+                placeholder="Enter delivery address"
+            >
+
+            <label for="priority4">
+                ⚡ Delivery Priority
+            </label>
+
+            <select id="priority4">
+
+                <option value="Normal">
+                    Normal
+                </option>
+
+                <option value="High">
+                    High
+                </option>
+
+                <option value="Low">
+                    Low
+                </option>
+
+            </select>
+
+
+            <label for="status4">
+                📦 Delivery Status
+            </label>
+
+            <select id="status4">
+
+                <option value="Pending">
+                    Pending
+                </option>
+
+                <option value="Out for Delivery">
+                    Out for Delivery
+                </option>
+
+                <option value="Delivered">
+                    Delivered
+                </option>
+
+                <option value="Cancelled">
+                    Cancelled
+                </option>
+
+            </select>
+
+
+            <!-- DELIVERY 5 -->
+
+            <label for="address5">
+                📦 Delivery Address 5
+            </label>
+
+            <input
+                type="text"
+                id="address5"
+                placeholder="Enter delivery address"
+            >
+
+            <label for="priority5">
+                ⚡ Delivery Priority
+            </label>
+
+            <select id="priority5">
+
+                <option value="Normal">
+                    Normal
+                </option>
+
+                <option value="High">
+                    High
+                </option>
+
+                <option value="Low">
+                    Low
+                </option>
+
+            </select>
+
+
+            <label for="status5">
+                📦 Delivery Status
+            </label>
+
+            <select id="status5">
+
+                <option value="Pending">
+                    Pending
+                </option>
+
+                <option value="Out for Delivery">
+                    Out for Delivery
+                </option>
+
+                <option value="Delivered">
+                    Delivered
+                </option>
+
+                <option value="Cancelled">
+                    Cancelled
+                </option>
+
+            </select>
+
+
+            <!-- BUTTON -->
+
+            <button
+                id="routeButton"
+                onclick="findRoute()"
+            >
+                Find Best Route 🚚
+            </button>
+
+
+        </div>
+
+
+        <!-- RESULT -->
+
+        <div id="result"></div>
+
+
+        <!-- MAP -->
+
+        <div id="map"></div>
+
+
+    </div>
+
+
+    <!-- Leaflet JS -->
+
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+    </script>
+
+
+    <!-- OUR JAVASCRIPT -->
+
+    <script
+        src="{{ url_for('static', filename='js/script.js') }}">
+    </script>
+
+
+</body>
+
+</html>

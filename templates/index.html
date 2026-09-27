@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Localized Delivery Route Planner</title>
+    
+   <link rel="icon" type="image/svg+xml" href="{{ url_for('static',filename='images/favicon.svg')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Localized Delivery Route Planner</h1>
+
+        <p class="subtitle">
+            Enter your pickup location and delivery addresses
+            to plan the best route.
+        </p>
+
+        <div class="form-box">
+
+            <label>📍 Pickup Location</label>
+            <input type="text" id="pickup" placeholder="Enter pickup location">
+
+            <label>📦 Delivery Address 1</label>
+            <input type="text" id="address1" placeholder="Enter delivery address">
+
+            <label>📦 Delivery Address 2</label>
+            <input type="text" id="address2" placeholder="Enter delivery address">
+
+            <label>📦 Delivery Address 3</label>
+            <input type="text" id="address3" placeholder="Enter delivery address">
+
+            <label>📦 Delivery Address 4</label>
+            <input type="text" id="address4" placeholder="Enter delivery address">
+
+            <label>📦 Delivery Address 5</label>
+            <input type="text" id="address5" placeholder="Enter delivery address">
+
+            <button id="routeButton"
+                    onclick="findRoute()">
+                Find Best Route 🚚
+            </button>
+
+        </div>
+
+        <div id="result"></div>
+
+        <div id="map"></div>
+
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
